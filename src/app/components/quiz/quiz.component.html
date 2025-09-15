@@ -1,0 +1,10 @@
+@if(vm$ | async; as vm) {
+  <div class="container">
+    <app-file-upload/>
+  </div>
+  <app-question-answer-panel />
+  @if(vm.isLoading) {
+    <app-loading-spinner [loadingText]="loadingText" />
+  }
+}
+

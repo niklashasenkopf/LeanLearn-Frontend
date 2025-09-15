@@ -1,0 +1,31 @@
+@if(vm$ | async; as vm) {
+  <div class="file-selection">
+    <button (click)="fileInput.click()">
+      @if(selectedFile) {
+        Change file
+      } @else {
+        Select a file
+      }
+    </button>
+    <input #fileInput hidden type="file" (change)="onFileSelected($event)">
+    <div class="icon-and-filename">
+      <span class="material-icons icon">
+        insert_drive_file
+      </span>
+      @if(selectedFile) {
+        <p>{{selectedFile.name}}</p>
+      } @else {
+        <p class="no-file-message">No file selected</p>
+      }
+    </div>
+  </div>
+  @if(selectedFile) {
+    <button
+      (click)="quizFacade.generateQuestion(selectedFile)"
+      [disabled]="vm.isLoading"
+    >
+      Generate question
+    </button>
+  }
+}
+

@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.file-selection{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.icon-and-filename {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  color: #e0e1dd;
+  font-size: 28px;
+}
+
+.no-file-message {
+  color: #e0e1dd;
+}

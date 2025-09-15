@@ -1,0 +1,43 @@
+@if(vm$ | async; as vm) {
+  <div class="possible-answers-container">
+    @if(vm.mcQuestion) {
+      <p><b>Question: </b>{{vm.mcQuestion.question}}</p>
+      @for(possibleAnswer of vm.mcQuestion.possibleAnswers; track $index) {
+        <div
+          class="possibleAnswer"
+          [class.selected] = "vm.selectedAnswerIndex == $index"
+          [class.correct] = "vm.answerSubmitted && (vm.mcQuestion.correctAnswerIndex == $index)"
+          [class.false] = "vm.answerSubmitted &&
+        (vm.selectedAnswerIndex == $index) && (vm.selectedAnswerIndex != vm.mcQuestion.correctAnswerIndex)"
+          (click)="this.quizFacade.selectAnswer($index)">
+          {{possibleAnswer}}
+        </div>
+      }
+    }
+  </div>
+
+  @if(vm.mcQuestion) {
+    <button
+      class="submit-button"
+      [disabled]="(vm.selectedAnswerIndex == null) || (vm.answerSubmitted)"
+      (click)="quizFacade.submitAnswer()"
+    >
+      Submit
+    </button>
+  }
+
+  @if(vm.mcQuestion && vm.answerSubmitted) {
+    <div class="explanation-container">
+      @if (vm.selectedAnswerIndex == vm.mcQuestion.correctAnswerIndex) {
+        <span class="material-icons" style="color: #38b000; font-size: 48px">
+        check_circle
+      </span>
+      } @else {
+        <span class="material-icons" style="color: #d00000; font-size: 48px; padding: 8px">
+        announcement
+      </span>
+      }
+      {{vm.mcQuestion.explanation}}
+    </div>
+  }
+}
