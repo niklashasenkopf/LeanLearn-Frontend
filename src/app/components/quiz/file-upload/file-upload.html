@@ -21,10 +21,10 @@
   </div>
   @if(selectedFile) {
     <button
-      (click)="quizFacade.generateQuestion(selectedFile)"
+      (click)="quizFacade.generateQuiz(selectedFile)"
       [disabled]="vm.isLoading"
     >
-      Generate question
+      Generate quiz
     </button>
   }
 }

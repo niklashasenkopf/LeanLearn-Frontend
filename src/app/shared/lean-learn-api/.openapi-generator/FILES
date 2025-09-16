@@ -3,7 +3,6 @@ README.md
 api.base.service.ts
 api.module.ts
 api/api.ts
-api/helloController.service.ts
 api/mcQuestionController.service.ts
 configuration.ts
 encoder.ts
@@ -12,6 +11,7 @@ index.ts
 model/mCQuestion.ts
 model/mCQuestionCreateRequestDTO.ts
 model/mCQuestionDTO.ts
+model/mCQuizDTO.ts
 model/models.ts
 param.ts
 provide-api.ts

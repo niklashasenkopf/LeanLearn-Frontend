@@ -27,7 +27,7 @@ export class FileUpload implements OnInit {
       return;
     }
 
-    this.quizFacade.generateQuestion(this.selectedFile)
+    this.quizFacade.generateQuiz(this.selectedFile)
   }
 
   onFileSelected(event: Event): void {

@@ -1,4 +1,10 @@
-.possible-answers-container {
+.question-and-answers-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.answers-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -32,10 +38,6 @@
   color: white;
 }
 
-.submit-button {
-  margin-top: 12px;
-}
-
 .explanation-container {
   display: flex;
   align-items: center;
@@ -45,4 +47,21 @@
   background-color: #e0e1dd;
   margin-top: 20px;
   padding: 20px;
+}
+
+.submit-navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.navigation-btn {
+  min-width: 100px;
 }

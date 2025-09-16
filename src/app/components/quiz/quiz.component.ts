@@ -21,7 +21,7 @@ import {AsyncPipe} from '@angular/common';
 export class QuizComponent implements OnInit {
 
   vm$ : Observable<QuestionState> | undefined;
-  loadingText: string = "Generating a question...";
+  loadingText: string = "Generating a quiz...";
 
   constructor(private quizFacade: QuizFacadeService) {}
 

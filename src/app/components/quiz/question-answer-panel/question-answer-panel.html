@@ -1,34 +1,49 @@
-@if(vm$ | async; as vm) {
-  <div class="possible-answers-container">
-    @if(vm.mcQuestion) {
-      <p><b>Question: </b>{{vm.mcQuestion.question}}</p>
-      @for(possibleAnswer of vm.mcQuestion.possibleAnswers; track $index) {
-        <div
-          class="possibleAnswer"
-          [class.selected] = "vm.selectedAnswerIndex == $index"
-          [class.correct] = "vm.answerSubmitted && (vm.mcQuestion.correctAnswerIndex == $index)"
-          [class.false] = "vm.answerSubmitted &&
-        (vm.selectedAnswerIndex == $index) && (vm.selectedAnswerIndex != vm.mcQuestion.correctAnswerIndex)"
-          (click)="this.quizFacade.selectAnswer($index)">
-          {{possibleAnswer}}
-        </div>
+@if(currentQuestion$ | async; as mcQuestion) {
+  <div class="question-and-answers-container">
+    @if(mcQuestion) {
+      <b>Question:
+        {{ ((currentQuestionIndex$ | async) ?? 0) + 1 }}
+        /
+        {{ ((currentQuizLength$ | async) ?? 0)}}
+      </b>
+      <p>
+        {{mcQuestion.question}}
+      </p>
+      <div class="answers-container">
+      @for(possibleAnswer of mcQuestion.possibleAnswers; track $index) {
+          <div
+            class="possibleAnswer"
+            [class.selected] = "(currentSelection$ | async) === $index"
+            [class.correct] = "(isAnswered$ | async) && mcQuestion.correctAnswerIndex == $index"
+            [class.false] = "
+          (isAnswered$ | async) &&
+          (currentSelection$ | async) == $index &&
+          (currentSelection$ | async) !== mcQuestion.correctAnswerIndex"
+            (click)="quizFacade.selectAnswer($index)">
+            {{possibleAnswer}}
+          </div>
       }
+      </div>
     }
   </div>
 
-  @if(vm.mcQuestion) {
+  <div class="submit-navigation-container">
     <button
       class="submit-button"
-      [disabled]="(vm.selectedAnswerIndex == null) || (vm.answerSubmitted)"
+      [disabled]="(currentSelection$ | async) === null || (isAnswered$ | async)"
       (click)="quizFacade.submitAnswer()"
     >
       Submit
     </button>
-  }
+    <div class="navigation-container">
+      <button class="navigation-btn" (click)="quizFacade.stepIntoPreviousQuestion()">Previous</button>
+      <button class="navigation-btn" (click)="quizFacade.stepIntoNextQuestion()">Next</button>
+    </div>
+  </div>
 
-  @if(vm.mcQuestion && vm.answerSubmitted) {
+  @if(isAnswered$ | async) {
     <div class="explanation-container">
-      @if (vm.selectedAnswerIndex == vm.mcQuestion.correctAnswerIndex) {
+      @if ((currentSelection$ | async) == mcQuestion.correctAnswerIndex) {
         <span class="material-icons" style="color: #38b000; font-size: 48px">
         check_circle
       </span>
@@ -37,7 +52,7 @@
         announcement
       </span>
       }
-      {{vm.mcQuestion.explanation}}
+      {{mcQuestion.explanation}}
     </div>
   }
 }
