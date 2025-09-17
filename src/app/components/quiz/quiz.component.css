@@ -7,3 +7,7 @@
   padding: 5px;
 }
 
+.quiz-and-progress-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}

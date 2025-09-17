@@ -11,31 +11,31 @@
 }
 
 .possibleAnswer {
-  border: 1px solid #0077b6;
+  border: 1px solid #e0e1dd;
   padding: 8px;
   border-radius: 4px;
+  background-color: #e8eff9;
 
   &:hover {
     cursor: pointer;
-    background-color: #e0e1dd;
   }
 }
 
 .possibleAnswer.selected {
-  background-color: #0077b6;
-  color: white;
+  color: #023e8a;
+  border: 1px solid #023e8a;
 }
 
 .possibleAnswer.correct {
-  border: 1px solid #38b000;
-  background-color: #38b000;
-  color: white;
+  border: 1px solid #e0e1dd;
+  background-color: #d8fdd0;
+  color: black;
 }
 
 .possibleAnswer.false {
-  border: 1px solid #d00000;
-  background-color: #d00000;
-  color: white;
+  border: 1px solid #e0e1dd;
+  background-color: #f9ebe8;
+  color: black;
 }
 
 .explanation-container {

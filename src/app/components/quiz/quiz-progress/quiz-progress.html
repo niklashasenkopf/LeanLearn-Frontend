@@ -1,0 +1,35 @@
+<div class="container">
+  @if(questionState$ | async; as questionState) {
+    @for(question of questionState.mcQuestions; track $index) {
+      <div class="progress-question"
+           [class.correct]="
+           this.quizFacade.answeredQuestion($index) &&
+           this.quizFacade.answeredQuestionCorrect($index)"
+           [class.wrong]="
+           this.quizFacade.answeredQuestion($index) &&
+           !this.quizFacade.answeredQuestionCorrect($index)"
+      >
+        <div class="status-icon">
+          @if(questionState.answerSubmitted && questionState.answerSubmitted[$index]){
+            <!-- Answer is submitted -->
+            @if(this.quizFacade.answeredQuestionCorrect($index)) {
+                <span class="material-icons correct" >
+                    check_circle
+                </span>
+            } @else {
+                <span class="material-icons wrong">
+                  cancel
+                </span>
+            }
+          } @else {
+            <!-- Answer is not submitted -->
+            <span class="material-icons not-answered">
+                circle
+            </span>
+          }
+        </div>
+        Question {{ $index + 1}}
+      </div>
+    }
+  }
+</div>

@@ -2,7 +2,10 @@
   <div class="container">
     <app-file-upload/>
   </div>
-  <app-question-answer-panel />
+  <div class="quiz-and-progress-container">
+    <app-question-answer-panel />
+    <app-quiz-progress />
+  </div>
   @if(vm.isLoading) {
     <app-loading-spinner [loadingText]="loadingText" />
   }

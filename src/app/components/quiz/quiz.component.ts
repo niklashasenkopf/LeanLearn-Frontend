@@ -5,6 +5,7 @@ import {QuestionAnswerPanel} from './question-answer-panel/question-answer-panel
 import {QuestionState, QuizFacadeService} from './quiz-facade.service';
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
+import {QuizProgress} from './quiz-progress/quiz-progress';
 
 @Component({
   selector: 'app-quiz',
@@ -13,6 +14,7 @@ import {AsyncPipe} from '@angular/common';
     FileUpload,
     QuestionAnswerPanel,
     AsyncPipe,
+    QuizProgress,
   ],
   providers: [],
   templateUrl: './quiz.component.html',

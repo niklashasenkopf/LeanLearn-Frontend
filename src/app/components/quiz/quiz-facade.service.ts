@@ -115,6 +115,29 @@ export class QuizFacadeService {
     this.state$.next({...this.state$.value, ...partial});
   }
 
+  answeredQuestion(index: number): boolean {
+    const current = this.state$.value;
+
+    return !!(current.answerSubmitted && current.answerSubmitted[index]);
+  }
+
+  answeredQuestionCorrect(index: number): boolean {
+    const current = this.state$.value;
+
+    if(!current.mcQuestions || !current.selectedAnswerIndex) {
+      return false;
+    }
+
+    const question = current.mcQuestions[index];
+    const selected = current.selectedAnswerIndex[index];
+
+    if(selected === null || selected === undefined) {
+      return false
+    }
+
+    return question.correctAnswerIndex === selected;
+  }
+
   readonly currentQuestion$: Observable<MCQuestionDTO | null> = this.vm$.pipe(
     map((vm) =>
       vm.mcQuestions && vm.currentQuestionIndex !== null
@@ -150,5 +173,7 @@ export class QuizFacadeService {
         : false
     )
   );
+
+
 
 }
