@@ -2,6 +2,7 @@ import {McQuestionControllerService, MCQuestionDTO} from '../../shared/lean-lear
 import {BehaviorSubject, map, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {mockMcQuiz} from './mcQuestionMockData';
+import {QuizSettingsFacadeService} from './quiz-settings/quiz-settings-facade.service';
 
 export interface QuestionState {
   mcQuestions: Array<MCQuestionDTO> | null;
@@ -25,7 +26,10 @@ export class QuizFacadeService {
 
   readonly vm$ = this.state$.asObservable();
 
-  constructor(private mcQuestionService: McQuestionControllerService) {}
+  constructor(
+    private mcQuestionService: McQuestionControllerService,
+    private quizSettingsFacade: QuizSettingsFacadeService
+  ) {}
 
   loadMockData(): void {
     this.patchState({
@@ -42,7 +46,9 @@ export class QuizFacadeService {
       isLoading: true,
     })
 
-    this.mcQuestionService.generateMcQuizForFile(file).subscribe({
+    const difficulty = this.quizSettingsFacade.currentDifficulty;
+
+    this.mcQuestionService.generateMcQuizForFile(difficulty, file).subscribe({
         next: value => this.patchState({
           mcQuestions: value.questions,
           currentQuestionIndex: 0,

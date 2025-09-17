@@ -22,14 +22,6 @@ export class FileUpload implements OnInit {
     this.vm$ = this.quizFacade.vm$;
   }
 
-  onGenerateQuestion() {
-    if(!this.selectedFile) {
-      return;
-    }
-
-    this.quizFacade.generateQuiz(this.selectedFile)
-  }
-
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if(input.files && input.files.length > 0){

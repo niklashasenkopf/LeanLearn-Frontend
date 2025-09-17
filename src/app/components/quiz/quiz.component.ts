@@ -6,6 +6,7 @@ import {QuestionState, QuizFacadeService} from './quiz-facade.service';
 import {Observable} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {QuizProgress} from './quiz-progress/quiz-progress';
+import {QuizSettings} from './quiz-settings/quiz-settings';
 
 @Component({
   selector: 'app-quiz',
@@ -15,6 +16,7 @@ import {QuizProgress} from './quiz-progress/quiz-progress';
     QuestionAnswerPanel,
     AsyncPipe,
     QuizProgress,
+    QuizSettings,
   ],
   providers: [],
   templateUrl: './quiz.component.html',

@@ -1,0 +1,15 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <span class="material-icons">
+      settings
+    </span>
+    <b>Generation Settings</b>
+  </div>
+  <span class="material-icons" (click)="toggleExpanded()">
+    keyboard_arrow_down
+  </span>
+</div>
+@if(isExpanded) {
+  <div class="separation-line"></div>
+  <app-difficulty-selection />
+}

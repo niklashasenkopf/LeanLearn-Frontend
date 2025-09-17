@@ -1,0 +1,44 @@
+:host {
+  display: contents;
+}
+
+.difficulties-container {
+  display: inline-flex;
+  width: fit-content;
+  gap: 8px;
+  padding: 8px;
+  background-color: white;
+  margin-top: 4px;
+  border-radius: 4px;
+}
+
+.difficulties-container div {
+  padding: 8px;
+  border-radius: 4px;
+  min-width: 60px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.easy {
+  background-color: #4B974B !important;
+  color: white !important;
+}
+
+.medium {
+  background-color: #DC7322 !important;
+  color: white !important;
+}
+
+.hard {
+  background-color: #C4281C !important;
+  color: white !important;
+}
+
+.extreme {
+  background-color: #750000 !important;
+  color: white !important;
+}

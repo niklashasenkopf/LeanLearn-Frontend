@@ -1,0 +1,30 @@
+<b>Question Difficulty</b>
+<div class="difficulties-container">
+  <div
+    (click)="quizSettingsFacade.changeDifficulty(Difficulty.EASY)"
+    [class.easy]="quizSettingsFacade.currentDifficulty === Difficulty.EASY"
+  >
+    Easy
+  </div>
+
+  <div
+    (click)="quizSettingsFacade.changeDifficulty(Difficulty.MEDIUM)"
+    [class.medium]="quizSettingsFacade.currentDifficulty === Difficulty.MEDIUM"
+  >
+    Medium
+  </div>
+
+  <div
+    (click)="quizSettingsFacade.changeDifficulty(Difficulty.HARD)"
+    [class.hard]="quizSettingsFacade.currentDifficulty === Difficulty.HARD"
+  >
+    Hard
+  </div>
+
+  <div
+    (click)="quizSettingsFacade.changeDifficulty(Difficulty.EXTREME)"
+    [class.extreme]="quizSettingsFacade.currentDifficulty === Difficulty.EXTREME"
+  >
+    Extreme
+  </div>
+</div>

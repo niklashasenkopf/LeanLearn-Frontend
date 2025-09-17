@@ -7,7 +7,12 @@
         Select a file
       }
     </button>
-    <input #fileInput hidden type="file" (change)="onFileSelected($event)">
+    <input
+      #fileInput
+      hidden type="file"
+      accept="text/markdown"
+      (change)="onFileSelected($event)"
+    >
     <div class="icon-and-filename">
       <span class="material-icons icon">
         insert_drive_file

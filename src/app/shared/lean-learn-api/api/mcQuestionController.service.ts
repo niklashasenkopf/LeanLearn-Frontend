@@ -42,17 +42,25 @@ export class McQuestionControllerService extends BaseService {
     }
 
     /**
+     * @param difficulty 
      * @param file 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public generateMcQuizForFile(file: Blob, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<MCQuizDTO>;
-    public generateMcQuizForFile(file: Blob, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<MCQuizDTO>>;
-    public generateMcQuizForFile(file: Blob, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<MCQuizDTO>>;
-    public generateMcQuizForFile(file: Blob, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public generateMcQuizForFile(difficulty: 'EASY' | 'MEDIUM' | 'HARD' | 'EXTREME', file: Blob, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<MCQuizDTO>;
+    public generateMcQuizForFile(difficulty: 'EASY' | 'MEDIUM' | 'HARD' | 'EXTREME', file: Blob, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<MCQuizDTO>>;
+    public generateMcQuizForFile(difficulty: 'EASY' | 'MEDIUM' | 'HARD' | 'EXTREME', file: Blob, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<MCQuizDTO>>;
+    public generateMcQuizForFile(difficulty: 'EASY' | 'MEDIUM' | 'HARD' | 'EXTREME', file: Blob, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (difficulty === null || difficulty === undefined) {
+            throw new Error('Required parameter difficulty was null or undefined when calling generateMcQuizForFile.');
+        }
         if (file === null || file === undefined) {
             throw new Error('Required parameter file was null or undefined when calling generateMcQuizForFile.');
         }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+          <any>difficulty, 'difficulty');
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -107,6 +115,7 @@ export class McQuestionControllerService extends BaseService {
             {
                 context: localVarHttpContext,
                 body: localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
