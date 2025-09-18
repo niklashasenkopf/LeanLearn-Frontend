@@ -117,6 +117,12 @@ export class QuizFacadeService {
     })
   }
 
+  stepToQuestionWithIndex(index: number): void {
+    this.patchState({
+      currentQuestionIndex: index
+    })
+  }
+
   private patchState(partial: Partial<QuestionState>) {
     this.state$.next({...this.state$.value, ...partial});
   }

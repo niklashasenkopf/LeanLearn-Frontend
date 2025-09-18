@@ -8,6 +8,8 @@
            [class.wrong]="
            this.quizFacade.answeredQuestion($index) &&
            !this.quizFacade.answeredQuestionCorrect($index)"
+           [class.selected]="questionState.currentQuestionIndex === $index"
+           (click)="this.quizFacade.stepToQuestionWithIndex($index)"
       >
         <div class="status-icon">
           @if(questionState.answerSubmitted && questionState.answerSubmitted[$index]){
