@@ -47,8 +47,9 @@ export class QuizFacadeService {
     })
 
     const difficulty = this.quizSettingsFacade.currentDifficulty;
+    const numQuestions = this.quizSettingsFacade.currentNumQuestions;
 
-    this.mcQuestionService.generateMcQuizForFile(difficulty, file).subscribe({
+    this.mcQuestionService.generateMcQuizForFile(difficulty, numQuestions, file).subscribe({
         next: value => this.patchState({
           mcQuestions: value.questions,
           currentQuestionIndex: 0,

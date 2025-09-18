@@ -1,0 +1,31 @@
+.num-questions-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 0 16px;
+  background-color: white;
+  border-radius: 4px;
+  min-width: 32px;
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  min-height: 50px;
+}
+
+.container button {
+  min-width: 40px;
+  font-size: 24px;
+}
+
+.inc-dec-buttons {
+  display: grid;
+
+}
+
+b {
+  margin-bottom: 4px;
+}

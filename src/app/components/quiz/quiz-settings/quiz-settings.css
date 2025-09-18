@@ -32,3 +32,14 @@
   margin-bottom: 12px;
   border-top: 3px solid rgba(0, 0, 0, 0.2);
 }
+
+.vertical-separation-line {
+  margin-left: 12px;
+  margin-right: 12px;
+  border-right: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.expanded-settings {
+  display: flex;
+  gap: 20px;
+}

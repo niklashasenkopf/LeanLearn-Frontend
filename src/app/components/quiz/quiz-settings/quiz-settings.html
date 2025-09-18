@@ -11,5 +11,9 @@
 </div>
 @if(isExpanded) {
   <div class="separation-line"></div>
-  <app-difficulty-selection />
+  <div class="expanded-settings">
+    <app-difficulty-selection />
+    <div class="vertical-separation-line"></div>
+    <app-num-questions-selection />
+  </div>
 }
