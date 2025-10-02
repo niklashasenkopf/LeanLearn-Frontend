@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {SidebarItem, SidebarItemType} from './sidebar-item/sidebar-item';
 
