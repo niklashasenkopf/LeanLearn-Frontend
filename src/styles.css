@@ -1,13 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   font-family: Arial, serif;
-  padding-left: 200px;
+  height: 100vh;
+  /* padding-left: 200px;
   padding-right: 200px;
-  padding-top: 50px;
+  padding-top: 50px; */
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 button {
-  background-color: #023e8a;
+  background-color: #5a5a5a;
   color: white;
   padding: 8px;
   border-radius: 4px;

@@ -1,0 +1,41 @@
+.container {
+  background-color: #fafafa;
+  height: 99vh;
+  padding: 40px 8px;
+  border-radius: 0 12px 12px 0;
+}
+
+.logo-container {
+  padding: 0 40px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.logo-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.sidebar-header {
+  color: #e0e1dd;
+  padding: 8px;
+}
+
+.sidebar-item {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #e0e1dd;
+  margin-bottom: 8px;
+}
+
+.separation-line {
+  border-top: 1px solid #e0e1dd;
+  margin-bottom: 8px;
+}
+
+.is-active {
+  background-color: #e0e1dd;
+  border-left: 3px solid black;
+}

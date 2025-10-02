@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="logo-container">
+      <!-- <img src="/lean_learn_logo.png" alt="company-logo" /> -->
+      <div>Lean Learn</div>
+    </div>
+    <div class="sidebar-header">Generation</div>
+    <div class="separation-line"></div>
+    @for(item of items; track $index) {
+      <app-sidebar-item
+        [routerLink]="item.routerLink"
+        [text]="item.text"
+        [isActive]="item === activeItem"
+        (click)="setActiveItem(item)"
+      />
+    }
+</div>

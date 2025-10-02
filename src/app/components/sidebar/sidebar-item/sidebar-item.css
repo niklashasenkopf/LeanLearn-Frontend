@@ -1,0 +1,11 @@
+.sidebar-item {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #e0e1dd;
+  margin-bottom: 8px;
+}
+
+.is-active {
+  background-color: #e0e1dd;
+  border-left: 3px solid black;
+}
