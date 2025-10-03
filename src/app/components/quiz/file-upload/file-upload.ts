@@ -1,31 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {QuestionState, QuizFacadeService} from '../quiz-facade.service';
-import {Observable} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
-  imports: [
-    AsyncPipe
-  ],
+  imports: [],
   templateUrl: './file-upload.html',
   styleUrl: './file-upload.css'
 })
-export class FileUpload implements OnInit {
+export class FileUpload {
 
-  selectedFile: File | undefined;
-  vm$: Observable<QuestionState> | undefined;
+  @Input() isLoading = false;
+  @Input() actionLabel = 'Upload';
+  @Output() fileSelected = new EventEmitter<File>();
+  @Output() submit = new EventEmitter<File>();
 
-  constructor(protected quizFacade: QuizFacadeService) {}
-
-  ngOnInit() {
-    this.vm$ = this.quizFacade.vm$;
-  }
+  selectedFile?: File;
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if(input.files && input.files.length > 0){
+    if(input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
+      this.fileSelected.emit(this.selectedFile);
+    }
+  }
+
+  onSubmit(): void {
+    if (this.selectedFile) {
+      this.submit.emit(this.selectedFile)
     }
   }
 

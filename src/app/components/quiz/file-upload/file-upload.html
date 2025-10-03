@@ -1,11 +1,6 @@
-@if(vm$ | async; as vm) {
-  <div class="file-selection">
+<div class="file-selection">
     <button (click)="fileInput.click()">
-      @if(selectedFile) {
-        Change file
-      } @else {
-        Select a file
-      }
+      {{ selectedFile ? 'Change file' : 'Select file'}}
     </button>
     <input
       #fileInput
@@ -26,11 +21,10 @@
   </div>
   @if(selectedFile) {
     <button
-      (click)="quizFacade.generateQuiz(selectedFile)"
-      [disabled]="vm.isLoading"
+      (click)="onSubmit()"
+      [disabled]="isLoading"
     >
       Generate quiz
     </button>
   }
-}
 

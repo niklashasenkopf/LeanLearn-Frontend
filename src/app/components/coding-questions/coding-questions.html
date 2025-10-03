@@ -1,1 +1,27 @@
 <h3>Coding Questions</h3>
+@if(vm$ | async; as vm) {
+  <div class="container">
+    <app-file-upload
+      [isLoading]="vm.isLoading"
+      actionLabel="Generate Coding Exercise"
+      (submit)="codingQuestionFacadeService.generateQuestion($event)"
+    />
+  </div>
+  @if(vm.isLoading) {
+    <app-loading-spinner [loadingText]="loadingText" />
+  } @else {
+    @if(currentQuestion$ | async; as currentQuestion) {
+      <div class="exercise-desc">{{currentQuestion.exerciseDescription}}</div>
+      <div class="code-editor">
+        <ngx-monaco-editor
+          [options]="editorOptions"
+          [(ngModel)]="currentQuestion.initialCode"
+          style="height: 100%"
+        >
+        </ngx-monaco-editor>
+      </div>
+    }
+  }
+}
+
+

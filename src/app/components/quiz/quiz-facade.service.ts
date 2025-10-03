@@ -1,7 +1,7 @@
 import {McQuestionControllerService, MCQuestionDTO} from '../../shared/lean-learn-api';
 import {BehaviorSubject, map, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {mockMcQuiz} from './mcQuestionMockData';
+import {mockMcQuiz} from '../mockData';
 import {QuizSettingsFacadeService} from './quiz-settings/quiz-settings-facade.service';
 
 export interface QuestionState {
@@ -29,7 +29,9 @@ export class QuizFacadeService {
   constructor(
     private mcQuestionService: McQuestionControllerService,
     private quizSettingsFacade: QuizSettingsFacadeService
-  ) {}
+  ) {
+    this.loadMockData()
+  }
 
   loadMockData(): void {
     this.patchState({

@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
   vm$ : Observable<QuestionState> | undefined;
   loadingText: string = "Generating a quiz...";
 
-  constructor(private quizFacade: QuizFacadeService) {}
+  constructor(protected quizFacade: QuizFacadeService) {}
 
   ngOnInit() {
     this.vm$ = this.quizFacade.vm$;

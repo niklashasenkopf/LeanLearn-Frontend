@@ -1,0 +1,20 @@
+.code-editor {
+  background-color: #1e1e1e;
+  height: 600px;
+  padding-top: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.exercise-desc {
+  margin-top: 20px;
+}
